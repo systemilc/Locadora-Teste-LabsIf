@@ -17,8 +17,6 @@ const atualizarCarro = (req, res) => {
       (err) => {
         if (err) {
           res.status(500).json({ error: 'Erro ao atualizar o carro' });
-        } else if (this.changes === 0) {
-          res.status(404).json({ error: 'Carro não encontrado' });
         } else {
           res.status(200).json({ message: 'Carro atualizado com sucesso' });
         }

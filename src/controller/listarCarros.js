@@ -78,18 +78,22 @@ const listarCarrosAlugados = async (req, res) => {
   }
 };
 
-
 const listarCarroId = (req, res) => {
   try {
     const carroId = req.params.id;
     const query = "SELECT * FROM carros WHERE id = ?";
-    banco.get(query, [carroId], (row) => {
-         res.status(200).json({ carro: row });    
+    banco.get(query, [carroId], (err, row) => {
+      if (err) {
+        res.status(500).json({ error: 'Erro ao buscar o carro' });
+      } else {
+        res.status(200).json({ carro: row });
+      }
     });
   } catch (error) {
     res.status(500).json({ error: 'Erro interno do servidor' });
   }
 };
+
 
 module.exports = {
   listarCarros,

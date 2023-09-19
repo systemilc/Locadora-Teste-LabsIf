@@ -12,7 +12,7 @@ router.get('/carros', listarCarros);
 router.get('/carros/disponiveis', listarCarrosDisponiveis);
 router.get('/carros/alugados', listarCarrosAlugados);
 router.get('/carros/:id', verificarIdCarro,listarCarroId);
-router.put('/carros/:id', atualizarCarro);
+router.put('/carros/:id', verificarIdCarro, atualizarCarro);
 router.delete('/carros/:id', deletarCarroId);
 router.post('/carros', NovoCarro);
 router.post('/carros/alugar', alugarCarro);
