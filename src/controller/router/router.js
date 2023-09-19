@@ -5,12 +5,13 @@ const { atualizarCarro } = require('../atualizaCarro');
 const { deletarCarroId } = require('../deletarCarro');
 const { NovoCarro } = require('../novoCarro');
 const { alugarCarro } = require('../alugarCarro');
+const { verificarIdCarro } = require('../../middleware/verificaIdParams');
 
 
 router.get('/carros', listarCarros);
 router.get('/carros/disponiveis', listarCarrosDisponiveis);
 router.get('/carros/alugados', listarCarrosAlugados);
-router.get('/carros/:id', listarCarroId);
+router.get('/carros/:id', verificarIdCarro,listarCarroId);
 router.put('/carros/:id', atualizarCarro);
 router.delete('/carros/:id', deletarCarroId);
 router.post('/carros', NovoCarro);
