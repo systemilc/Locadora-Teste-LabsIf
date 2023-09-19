@@ -50,8 +50,16 @@ const listarCarrosDisponiveis = async (req, res) => {
 const listarCarrosAlugados = async (req, res) => {
   console.log('Entrei na rota')
   try {
+    const query = `
+      SELECT carros.*, MAX(aluguel.data_hora_fim) AS data_hora_fim
+      FROM carros
+      LEFT JOIN aluguel ON carros.id = aluguel.carro_id
+      WHERE carros.disponivel = 0
+      GROUP BY carros.id
+    `;
+
     const rows = await new Promise((resolve, reject) => {
-      banco.all("SELECT * FROM carros WHERE disponivel = false", (err, rows) => {
+      banco.all(query, (err, rows) => {
         if (err) {
           reject(err);
         } else {
@@ -66,9 +74,10 @@ const listarCarrosAlugados = async (req, res) => {
       res.status(200).json({ carros: rows });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Erro: Não foi possível listar os carros disponíveis' });
+    res.status(500).json({ error: 'Erro: Não foi possível listar os carros alugados' });
   }
 };
+
 
 const listarCarroId = (req, res) => {
   try {
