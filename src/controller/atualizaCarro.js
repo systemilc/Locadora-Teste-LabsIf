@@ -14,12 +14,12 @@ const atualizarCarro = (req, res) => {
     banco.run(
       query,
       [modelo, marca, descricao, preco_aluguel, categoria, disponivel, carroId],
-      (err, result) => {
+      (err) => {
         if (err) {
           res.status(500).json({ error: 'Erro ao atualizar o carro' });
-        } /*else if (result.changes === 0) {
+        } else if (this.changes === 0) {
           res.status(404).json({ error: 'Carro não encontrado' });
-        }*/ else {
+        } else {
           res.status(200).json({ message: 'Carro atualizado com sucesso' });
         }
       }
