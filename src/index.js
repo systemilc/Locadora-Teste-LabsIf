@@ -1,4 +1,4 @@
-const { router } = require('./controller/router/router');
+const { router } = require('./router/router');
 const app = require('./servidor');
 
 
