@@ -19,13 +19,11 @@ db.serialize(() => {
     VALUES ('Toyota Corolla', 'Toyota', 'Um sedã popular com bom consumo de combustível.', 120.00, 'Sedã', 1)
   `);
 
-  // Inserir exemplo de carro 2
   db.run(`
     INSERT INTO carros (modelo, marca, descricao, preco_aluguel, categoria, disponivel)
     VALUES ('Honda Civic', 'Honda', 'Um sedã esportivo com ótimo desempenho.', 140.00, 'Sedã', 1)
   `);
 
-  // Criação da tabela "aluguel"
   db.run(`
     CREATE TABLE IF NOT EXISTS aluguel (
       id INTEGER PRIMARY KEY AUTOINCREMENT,

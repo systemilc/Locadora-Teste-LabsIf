@@ -25,7 +25,6 @@ const listarCarros = async (req, res) => {
 
 
 const listarCarrosDisponiveis = async (req, res) => {
-  console.log('Entrei na rota')
   try {
     const rows = await new Promise((resolve, reject) => {
       banco.all("SELECT * FROM carros WHERE disponivel = true", (err, rows) => {
@@ -48,8 +47,7 @@ const listarCarrosDisponiveis = async (req, res) => {
 };
 
 const listarCarrosAlugados = async (req, res) => {
-  console.log('Entrei na rota')
-  try {
+   try {
     const query = `
       SELECT carros.*, MAX(aluguel.data_hora_fim) AS data_hora_fim
       FROM carros
