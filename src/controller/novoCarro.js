@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const banco = new sqlite3.Database('./src/database/locadora.sqlite');
 
-const NovoCarro = (req, res) => {
+const novoCarro = (req, res) => {
     try {
       const { modelo, marca, descricao, preco_aluguel, categoria, disponivel } = req.body;
       
@@ -30,6 +30,6 @@ const NovoCarro = (req, res) => {
   };
 
   module.exports ={
-    NovoCarro
+    novoCarro
   }
   
