@@ -27,16 +27,14 @@
                                 "$ref": "#/components/schemas/carros"
                             },
                             "example":{
-                                "carros":{
-                                    "values":{
-                                        "modelo": "Toyota Corolla",
-                                        "marca": "Toyota",
-                                        "descricao": "Um sedã popular com bom consumo de combustível.",
-                                        "preco_aluguel": 14829000,
-                                        "categoria": "Sedã",
-                                        "disponivel": true
-                                    }
-                                }
+                                "modelo": "Toyota Corolla",
+                                "marca": "Toyota",
+                                "descricao": "Um sedã popular com bom consumo de combustível.",
+                                "preco_aluguel": 14829000,
+                                "categoria": "Sedã",
+                                "disponivel": true
+                                    
+                                
                             }
                         }
                     }
@@ -55,6 +53,29 @@
                     },
                     "400":{
                         "description": "É necessário informar todos os campos para criar ou atualizar um veículo."
+                    },
+                    "500":{
+                        "description": "Erro interno do servidor"
+                    }
+                }
+            },
+            "get":{
+                "summary": "Lista de veículos",
+                "description": "Essa rota será responsável por listar todos os veículos",
+                "tag": ["veiculo"],
+                "responses":{
+                    "200":{
+                        "description": "Novo carro criado com sucesso",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                    "items":{
+                                        "$ref":"#/components/schemas/carros"   
+                                    }
+                                }
+                            }
+                        }
                     },
                     "500":{
                         "description": "Erro interno do servidor"
