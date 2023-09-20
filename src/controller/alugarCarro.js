@@ -7,7 +7,7 @@ const alugarCarro = async (req, res) => {
   try {
     const { carroId } = req.body;
     const db = await open({
-      filename: './src/locadora.sqlite',
+      filename: './src/database/locadora.sqlite',
       driver: sqlite3.Database,
     });
 

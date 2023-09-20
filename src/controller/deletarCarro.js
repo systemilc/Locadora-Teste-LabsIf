@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const banco = new sqlite3.Database('./src/locadora.sqlite');
+const banco = new sqlite3.Database('./src/database/locadora.sqlite');
 
 const deletarCarroId = (req, res) => {
     try {
