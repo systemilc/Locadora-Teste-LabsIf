@@ -41,7 +41,7 @@ A documentação da API é fornecida usando o Swagger/OpenAPI. Você pode acessa
 ### Criação do banco
 Caso precise recriar o banco de dados, execute o comando abaixo:
  ```comando
-     node ./src/database.js
+     node ./src/database/database.js
  ```
 
 ### Rotas de Exemplo

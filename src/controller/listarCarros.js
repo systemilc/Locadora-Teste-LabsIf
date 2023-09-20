@@ -1,23 +1,15 @@
-const sqlite3 = require('sqlite3').verbose();
-const banco = new sqlite3.Database('./src/database/locadora.sqlite');
+const { listarCarroDao, listarCarrosDisponiveisDao, listarCarrosAlugadosDao, listarCarroIdDao } = require("../dao/carroDao");
 
 const listarCarros = async (req, res) => {
   try {
-   const rows = await new Promise((resolve, reject) => {
-     banco.all("SELECT * FROM carros", (err, rows) => {
-       if (err) {
-         reject(err);
-       } else {
-         resolve(rows);
-       }
-     });
-   });
-
+   const rows = await listarCarroDao();
+   
    if (rows.length === 0) {
-     return res.status(404).json({ error: 'Não existem carros cadastrados' });
-   }
-
-   res.status(200).json({ carros: rows });
+    res.status(404).json({ error: 'Não existem carros cadastrados' });
+  } else {
+    res.status(200).json({ carros: rows });        
+  }
+   
  } catch (error) {
    res.status(500).json({ error: 'Erro: Não foi possível listar os veículos' });
  }
@@ -26,15 +18,8 @@ const listarCarros = async (req, res) => {
 
 const listarCarrosDisponiveis = async (req, res) => {
   try {
-    const rows = await new Promise((resolve, reject) => {
-      banco.all("SELECT * FROM carros WHERE disponivel = true", (err, rows) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(rows);
-        }
-      });
-    });
+
+    const rows = await listarCarrosDisponiveisDao()
 
     if (rows.length === 0) {
       res.status(404).json({ error: 'No momento, todos os carros estão alugados' });
@@ -48,23 +33,7 @@ const listarCarrosDisponiveis = async (req, res) => {
 
 const listarCarrosAlugados = async (req, res) => {
    try {
-    const query = `
-      SELECT carros.*, MAX(aluguel.data_hora_fim) AS data_hora_fim
-      FROM carros
-      LEFT JOIN aluguel ON carros.id = aluguel.carro_id
-      WHERE carros.disponivel = 0
-      GROUP BY carros.id
-    `;
-
-    const rows = await new Promise((resolve, reject) => {
-      banco.all(query, (err, rows) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(rows);
-        }
-      });
-    });
+    const rows = await listarCarrosAlugadosDao()
 
     if (rows.length === 0) {
       res.status(404).json({ error: 'No momento todos os carros estão disponíveis' });
@@ -76,19 +45,15 @@ const listarCarrosAlugados = async (req, res) => {
   }
 };
 
-const listarCarroId = (req, res) => {
+const listarCarroId = async (req, res) => {
   try {
-    const carroId = req.params.id;
-    const query = "SELECT * FROM carros WHERE id = ?";
-    banco.get(query, [carroId], (err, row) => {
-      if(!row){
-        res.status(404).json({ error: 'Veículo não encontrado' });
-      }else if (err) {
-        res.status(500).json({ error: 'Erro ao buscar o carro' });
-      }else {
-        res.status(200).json({ carro: row });
-      }
-    });
+    const row = await listarCarroIdDao(req, res);
+
+    if (!row) {
+      res.status(404).json({ error: 'Veículo não encontrado' });
+    } else {
+      res.status(200).json({ carro: row });
+    }
   } catch (error) {
     res.status(500).json({ error: 'Erro interno do servidor' });
   }
