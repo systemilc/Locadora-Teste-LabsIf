@@ -38,18 +38,24 @@ Para iniciar a API, execute o seguinte comando:
 ### Documentação da API
 A documentação da API é fornecida usando o Swagger/OpenAPI. Você pode acessar a documentação em http://localhost:3000/api-docs.
 
+### Criação do banco
+Caso precise recriar o banco de dados, execute o comando abaixo:
+ ```comando
+     node ./src/database.js
+ ```
+
 ### Rotas de Exemplo
 Aqui estão algumas das rotas disponíveis na API:
 
-Listar todos os carros: GET /carros
-Listar carros disponíveis: GET /carros/disponiveis
-Listar carros alugados: GET /carros/alugados
-Obter detalhes de um carro por ID: GET /carros/{id}
-Atualizar detalhes de um carro por ID: PUT /carros/{id}
-Deletar um carro por ID: DELETE /carros/{id}
-Adicionar um novo carro: POST /carros
-Alugar um carro: POST /carros/alugar
-Certifique-se de consultar a documentação completa para obter detalhes sobre os parâmetros, respostas e exemplos de uso.
+- Listar todos os carros: GET /carros
+- Listar carros disponíveis: GET /carros/disponiveis
+- Listar carros alugados: GET /carros/alugados
+- Obter detalhes de um carro por ID: GET /carros/{id}
+- Atualizar detalhes de um carro por ID: PUT /carros/{id}
+- Deletar um carro por ID: DELETE /carros/{id}
+- Adicionar um novo carro: POST /carros
+- Alugar um carro: POST /carros/alugar
+- Certifique-se de consultar a documentação completa para obter detalhes sobre os parâmetros, respostas e exemplos de uso.
 
 ### Contribuindo
 Se desejar contribuir com melhorias ou correções, sinta-se à vontade para criar um fork deste repositório e enviar um pull request. Ficarei feliz em revisar e aceitar contribuições.
