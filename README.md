@@ -1,77 +1,58 @@
-# Locadora-Teste-LabsIf
+# API de Aluguel de Carros
 
-LabsIF : sistema para gerenciamento de uma locadora de carros 
+Uma API simples para gerenciar carros disponíveis para aluguel. Esta API utiliza as seguintes bibliotecas e tecnologias:
 
+- [Express.js](https://expressjs.com/): Um framework Node.js para construir APIs web.
+- [Swagger/OpenAPI](https://swagger.io/): Uma ferramenta para criar documentação e definir especificações para APIs RESTful.
+- [date-fns](https://date-fns.org/): Uma biblioteca para manipulação de datas em JavaScript.
+- [SQLite](https://www.sqlite.org/): Um banco de dados SQL embutido.
 
-# Indice 
+## Configuração e Uso
 
-<a name="ancora"></a>
+### Pré-requisitos
 
-- [Teste](#ancora1)
-- [Requisitos](#ancora2)
-- [Escopo](#ancora3)
-- [Criterios de Avaliação](#ancora4)
-- [Dicas](#ancora5)
-- [Instruções](#ancora6)
+Certifique-se de ter [Node.js](https://nodejs.org/) e [npm](https://www.npmjs.com/) instalados em sua máquina.
 
-#
-<a id="ancora1"></a>
-# Teste
+### Instalação
 
-O desafio é criar o backend para um sistema de gerenciamento de uma locadora de carro.
+1. Clone este repositório:
 
+   ```bash
+   git clone https://github.com/seu-usuario/api-aluguel-carros.git
+   cd api-aluguel-carros
 
+2. Instale todas as dependências:
+ ```bash
+    npm install
+ ```
 
-#
-<a id="ancora2"></a>
-# Requisitos:
-
-<li> Desenvolver uma API RESTful que implemente as operações CRUD (Create, Read, Update, Delete). </li>
-<li> A API deve ser integrada com um banco de dados relacional, como MySQL ou Sqlite. </li>
-<li> A API deve ser desenvolvida usando uma dessas linguagens de programação  Python, PHP ou Node.js. </li>
-
-#
-<a id="ancora3"></a>
-# Escopo:
-
-A API deve suportar as seguintes operações CRUD:
-
-[POST] /carros :Criar um carro, deve permitir que um usuário crie um novo carro, fornecendo as informações básicas, como modelo, marca, descrição, preço de aluguel e categoria.
-
-[POST] /carros/alugar : Alugar um carro, deve permitir que um usuário alugue um carro, fornecendo o ID do carro, a data e hora de início do aluguel e a data e hora de fim do aluguel.
-
-[GET] /carros : Listar todos os carros, deve permitir que um usuário liste todos os carros.
-
-[GET] /carros/{id} : Listar carro, apenas um carro específico, fornecendo o ID do carro.
+### Executando a API
+Para iniciar a API, execute o seguinte comando:
 
 
-[PUT] /carros/{id} : Atualizar um carro, deve permitir que um usuário atualize as informações de um carro existente, fornecendo o ID do carro e as informações a serem atualizadas.
+ ```comando
+     npm run dev
+ ```
+ A API estará disponível em http://localhost:3000. Você pode personalizar a porta no arquivo config.js.
 
-[DELETE] /carros/{id}: Excluir um carro, deve permitir que um usuário exclua um carro existente, fornecendo o ID do carro.
+### Documentação da API
+A documentação da API é fornecida usando o Swagger/OpenAPI. Você pode acessar a documentação em http://localhost:3000/api-docs.
 
-[GET] /carros/disponiveis : Listar carros disponíveis, essa operação deve retornar uma lista de todos os carros que estão disponíveis para aluguel.
+### Rotas de Exemplo
+Aqui estão algumas das rotas disponíveis na API:
 
-[GET] /carros/alugados :Listar carros alugados, essa operação deve retornar uma lista de todos os carros que estão alugados.
+Listar todos os carros: GET /carros
+Listar carros disponíveis: GET /carros/disponiveis
+Listar carros alugados: GET /carros/alugados
+Obter detalhes de um carro por ID: GET /carros/{id}
+Atualizar detalhes de um carro por ID: PUT /carros/{id}
+Deletar um carro por ID: DELETE /carros/{id}
+Adicionar um novo carro: POST /carros
+Alugar um carro: POST /carros/alugar
+Certifique-se de consultar a documentação completa para obter detalhes sobre os parâmetros, respostas e exemplos de uso.
 
-#
-<a id="ancora4"></a>
-# Critérios de avaliação:
+### Contribuindo
+Se desejar contribuir com melhorias ou correções, sinta-se à vontade para criar um fork deste repositório e enviar um pull request. Ficarei feliz em revisar e aceitar contribuições.
 
-<li> A API deve estar completa e funcionando de acordo com os requisitos. </li>
-<li>A API deve ser bem estruturada e organizada.</li>
-<li>A API deve ser testável, para facilitar o desenvolvimento e testes da API, utilize umas das ferramentas Postman ou Insomnia para realizar as requisições HTTP.</li>
-
-# 
-<a id="ancora5"></a>
-# Dicas : 
-
-<li>Comece pelo básico e implemente as operações CRUD básicas primeiro.</li>
-<li>Use uma ferramenta de banco de dados para criar o esquema do banco de dados.</li>
-<li>Faça um boa documentação da api, utilizando  swagger. </li>
-
-#
-<a id="ancora6"></a>
-# Intruções:
-
-<li> Para o inicio do teste, faça um clone desse repositorio ou um fork </li>
-<li> Ao final do teste envie para esse endereços com o assunto "Teste Labs Backend" :  amanda.tavares@labsif.com.br /  contato@labsif.com.br </li>
+### Licença
+Este projeto está licenciado sob a Licença MIT.

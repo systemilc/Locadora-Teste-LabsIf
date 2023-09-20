@@ -81,9 +81,11 @@ const listarCarroId = (req, res) => {
     const carroId = req.params.id;
     const query = "SELECT * FROM carros WHERE id = ?";
     banco.get(query, [carroId], (err, row) => {
-      if (err) {
+      if(!row){
+        res.status(404).json({ error: 'Veículo não encontrado' });
+      }else if (err) {
         res.status(500).json({ error: 'Erro ao buscar o carro' });
-      } else {
+      }else {
         res.status(200).json({ carro: row });
       }
     });
@@ -91,6 +93,8 @@ const listarCarroId = (req, res) => {
     res.status(500).json({ error: 'Erro interno do servidor' });
   }
 };
+
+
 
 
 module.exports = {

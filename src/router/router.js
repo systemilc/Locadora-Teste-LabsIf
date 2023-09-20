@@ -5,17 +5,15 @@ const { atualizarCarro } = require('../controller/atualizaCarro');
 const { deletarCarroId } = require('../controller/deletarCarro');
 const { NovoCarro } = require('../controller/novoCarro');
 const { alugarCarro } = require('../controller/alugarCarro');
-const { verificarIdCarro } = require('../middleware/verificaIdParams');
-const { todosOsCampos } = require('../middleware/camposObrigatorios');
 const { verificarDisponibilidade } = require('../middleware/verificaStatusVeiculo');
 
 router.get('/carros', listarCarros);
 router.get('/carros/disponiveis', listarCarrosDisponiveis);
 router.get('/carros/alugados', listarCarrosAlugados);
-router.get('/carros/:id', verificarIdCarro,listarCarroId);
-router.put('/carros/:id',todosOsCampos, verificarIdCarro, atualizarCarro);
+router.get('/carros/:id', listarCarroId);
+router.put('/carros/:id', atualizarCarro);
 router.delete('/carros/:id',verificarDisponibilidade, deletarCarroId);
-router.post('/carros', todosOsCampos, NovoCarro);
+router.post('/carros', NovoCarro);
 router.post('/carros/alugar', alugarCarro);
 
 module.exports = {
