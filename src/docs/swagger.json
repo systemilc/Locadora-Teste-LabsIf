@@ -1,145 +1,217 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "API de Aluguel de Carros",
-      "version": "1.0.0",
-      "description": "Uma API para gerenciar carros disponíveis para aluguel."
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Aluguel de Carros",
+    "version": "1.0.0",
+    "description": "Uma API para gerenciar carros disponíveis para aluguel.",
+    "contact": {
+      "email": "isaac.systemilc@gmail.com"
+    }
+  },
+  "paths": {
+    "/carros": {
+      "get": {
+        "summary": "Listar todos os carros",
+        "responses": {
+          "200": {
+            "description": "Lista de carros recuperada com sucesso"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      },
+      "post": {
+        "summary": "Adicionar um novo carro",
+        "requestBody": {
+          "description": "Dados do novo carro",
+          "content": {
+            "application/json": {
+              "example": {
+                "modelo": "Toyota Corolla",
+                "marca": "Toyota",
+                "descricao": "Um sedã popular com bom consumo de combustível.",
+                "preco_aluguel": 14829000,
+                "categoria": "Sedã",
+                "disponivel": 1
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Carro adicionado com sucesso"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
     },
-    "paths": {
-      "/carros": {
-        "get": {
-          "summary": "Listar todos os carros",
-          "responses": {
-            "200": {
-              "description": "Lista de carros recuperada com sucesso"
+    "/carros/disponiveis": {
+      "get": {
+        "summary": "Listar carros disponíveis para aluguel",
+        "responses": {
+          "200": {
+            "description": "Lista de carros disponíveis recuperada com sucesso"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/carros/alugados": {
+      "get": {
+        "summary": "Listar carros alugados",
+        "responses": {
+          "200": {
+            "description": "Lista de carros alugados recuperada com sucesso"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      }
+    },
+    "/carros/{id}": {
+      "get": {
+        "summary": "Obter detalhes de um carro por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
             },
-            "500": {
-              "description": "Erro interno do servidor"
+            "description": "ID do carro"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detalhes do carro recuperados com sucesso"
+          },
+          "204": {
+            "description": "Carro não encontrado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar detalhes de um carro por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID do carro"
+          }
+        ],
+        "requestBody": {
+          "description": "Dados atualizados do carro",
+          "content": {
+            "application/json": {
+              "example": {
+                "modelo": "Toyota Corolla ATUALIZADO",
+                "marca": "Toyota modificado ATUALIZADO",
+                "descricao": "Um sedã popular com bom consumo de combustível. modificado",
+                "preco_aluguel": 15000000,
+                "categoria": "Sedã ATUALIZADO",
+                "disponivel": true
+              }
             }
           }
         },
-        "post": {
-          "summary": "Adicionar um novo carro",
-          "responses": {
-            "201": {
-              "description": "Carro adicionado com sucesso"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
-            }
+        "responses": {
+          "200": {
+            "description": "Detalhes do carro atualizados com sucesso"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
           }
         }
       },
-      "/carros/disponiveis": {
-        "get": {
-          "summary": "Listar carros disponíveis para aluguel",
-          "responses": {
-            "200": {
-              "description": "Lista de carros disponíveis recuperada com sucesso"
+      "delete": {
+        "summary": "Deletar um carro por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
             },
-            "500": {
-              "description": "Erro interno do servidor"
-            }
+            "description": "ID do carro"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Carro deletado com sucesso"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
           }
         }
-      },
-      "/carros/alugados": {
-        "get": {
-          "summary": "Listar carros alugados",
-          "responses": {
-            "200": {
-              "description": "Lista de carros alugados recuperada com sucesso"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
-            }
-          }
-        }
-      },
-      "/carros/{id}": {
-        "get": {
-          "summary": "Obter detalhes de um carro por ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer"
-              },
-              "description": "ID do carro"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Detalhes do carro recuperados com sucesso"
-            },
-            "204": {
-              "description": "Carro não encontrado"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
+      }
+    },
+    "/carros/alugar": {
+      "post": {
+        "summary": "Alugar um carro",
+        "requestBody": {
+          "description": "Dados da solicitação de aluguel",
+          "content": {
+            "application/json": {
+              "example": {
+                "carroId": 13
+              }
             }
           }
         },
-        "put": {
-          "summary": "Atualizar detalhes de um carro por ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer"
-              },
-              "description": "ID do carro"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Detalhes do carro atualizados com sucesso"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
-            }
-          }
-        },
-        "delete": {
-          "summary": "Deletar um carro por ID",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "integer"
-              },
-              "description": "ID do carro"
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Carro deletado com sucesso"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
-            }
+        "responses": {
+          "201": {
+            "description": "Carro alugado com sucesso"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
           }
         }
-      },
-      "/carros/alugar": {
-        "post": {
-          "summary": "Alugar um carro",
-          "responses": {
-            "201": {
-              "description": "Carro alugado com sucesso"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
-            }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "carros": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "modelo": {
+            "type": "string"
+          },
+          "marca": {
+            "type": "string"
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "preco_aluguel": {
+            "type": "number"
+          },
+          "categoria": {
+            "type": "string"
+          },
+          "disponivel": {
+            "type": "boolean"
           }
         }
       }
     }
   }
-  
+}
