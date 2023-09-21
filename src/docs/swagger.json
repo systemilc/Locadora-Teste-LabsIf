@@ -23,6 +23,7 @@
       },
       "post": {
         "summary": "Adicionar um novo carro",
+        "description": "OBS.: É necessário informar todos os dados para adicionar um novo carro.",
         "requestBody": {
           "description": "Dados do novo carro",
           "content": {
@@ -102,6 +103,7 @@
       },
       "put": {
         "summary": "Atualizar detalhes de um carro por ID",
+        "description": "OBS.: É necessário informar todos os dados para atualizar um carro.",
         "parameters": [
           {
             "name": "id",
@@ -139,6 +141,7 @@
       },
       "delete": {
         "summary": "Deletar um carro por ID",
+        "description": "OBS.: Não é possivel excluir carro com status alugado.",
         "parameters": [
           {
             "name": "id",
