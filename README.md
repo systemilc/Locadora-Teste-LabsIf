@@ -7,6 +7,10 @@ Uma API simples para gerenciar carros disponíveis para aluguel. Esta API utiliz
 - [date-fns](https://date-fns.org/): Uma biblioteca para manipulação de datas em JavaScript.
 - [SQLite](https://www.sqlite.org/): Um banco de dados SQL embutido.
 
+- ## Vídeo de Demonstração
+
+Assista ao vídeo de demonstração [aqui](https://youtu.be/tm838A-FDkI).
+
 ## Configuração e Uso
 
 ### Pré-requisitos
