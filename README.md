@@ -9,7 +9,8 @@ Uma API simples para gerenciar carros disponíveis para aluguel. Esta API utiliz
 
 - ## Vídeo de Demonstração
 
-Assista ao vídeo de demonstração [AQUI](https://youtu.be/tm838A-FDkI){:target="_blank"}
+Assista ao vídeo de demonstração [![AQUI](https://youtu.be/tm838A-FDkI)](https://youtu.be/tm838A-FDkI){:target="_blank"}
+
 
 
 ## Configuração e Uso
