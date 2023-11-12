@@ -11,7 +11,6 @@ Uma API simples para gerenciar carros disponíveis para aluguel. Esta API utiliz
 
 Assista ao vídeo de demonstração [![AQUI]](https://youtu.be/tm838A-FDkI)
 
-
 ## Configuração e Uso
 
 ### Pré-requisitos
@@ -26,30 +25,38 @@ Certifique-se de ter [Node.js](https://nodejs.org/) e [npm](https://www.npmjs.co
    git clone https://github.com/seu-usuario/api-aluguel-carros.git
    cd api-aluguel-carros
 
+   ```
+
 2. Instale todas as dependências:
- ```bash
-    npm install
- ```
+
+```bash
+   npm install
+```
 
 ### Executando a API
+
 Para iniciar a API, execute o seguinte comando:
 
+```comando
+    npm run dev
+```
 
- ```comando
-     npm run dev
- ```
- A API estará disponível em http://localhost:3000. Você pode personalizar a porta no arquivo config.js.
+A API estará disponível em http://localhost:3000. Você pode personalizar a porta no arquivo config.js.
 
 ### Documentação da API
+
 A documentação da API é fornecida usando o Swagger/OpenAPI. Você pode acessar a documentação em http://localhost:3000/api-docs.
 
 ### Criação do banco
+
 Caso precise recriar o banco de dados, execute o comando abaixo:
- ```comando
-     node ./src/database/database.js
- ```
+
+```comando
+    node ./src/database/database.js
+```
 
 ### Rotas de Exemplo
+
 Aqui estão algumas das rotas disponíveis na API:
 
 - Listar todos os carros: GET /carros
@@ -63,7 +70,9 @@ Aqui estão algumas das rotas disponíveis na API:
 - Certifique-se de consultar a documentação completa para obter detalhes sobre os parâmetros, respostas e exemplos de uso.
 
 ### Contribuindo
+
 Se desejar contribuir com melhorias ou correções, sinta-se à vontade para criar um fork deste repositório e enviar um pull request. Ficarei feliz em revisar e aceitar contribuições.
 
 ### Licença
+
 Este projeto está licenciado sob a Licença MIT.
