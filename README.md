@@ -1,4 +1,4 @@
-# API de Aluguel de Carros
+# API de Aluguel de Carros - LabsIf
 
 Uma API simples para gerenciar carros disponíveis para aluguel. Esta API utiliza as seguintes bibliotecas e tecnologias:
 
